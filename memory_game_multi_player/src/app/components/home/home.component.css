@@ -1,0 +1,36 @@
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.div-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: antiquewhite;
+    padding: 1em;
+    border-radius: 1em;
+    margin-top: 1em;
+}
+
+.form-group {
+    margin: 1em;
+}
+
+.form-group > label{
+    font-size: 1em;
+}
+
+.form-group > input {
+    font-size: 1em;
+}
+
+.div-form label {
+    font-weight: bold;
+}
+
+.div-form input {
+    border-radius: 0.5em;
+}

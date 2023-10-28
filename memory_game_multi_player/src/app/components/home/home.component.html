@@ -1,0 +1,17 @@
+<main>
+    <div class="div-form">
+        <form #f= "ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group">
+                <label for="number">Number Of Players: </label>
+                <input type="text" name="number" placeholder="Number Of Players" ngModel required (ngModelChange)="valueChange($event)">
+            </div>
+            <div class="player" *ngFor="let i of list">
+                <div class="form-group">
+                    <label for="name">Player Name: </label>
+                    <input type="text" name="name_{{i}}" placeholder="Name" ngModel required>
+                </div>
+            </div>
+            <input type="submit" routerLink="board" value="Start">
+        </form>
+    </div>
+</main>

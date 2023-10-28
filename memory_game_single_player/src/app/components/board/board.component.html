@@ -1,0 +1,16 @@
+<div class="game" *ngIf="cards!.length > 0; else noGame">
+    <div class="info">
+        <div class="points">Points: {{points}}</div>
+        <div class="moviments">Moviments: {{moviments}}</div>
+    </div>
+    <div class="board">
+        <div class="cards-container">
+            <div class="card" *ngFor="let card of cards">
+                <app-card (onClick)="createHandler($event)" [count]="count" [card]="card" [clearEmitter]="clear" [selected]="selected"></app-card>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #noGame>
+    <h1>No Game</h1>
+</ng-template>

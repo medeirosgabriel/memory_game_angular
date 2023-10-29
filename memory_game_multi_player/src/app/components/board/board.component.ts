@@ -6,7 +6,7 @@ import { PlayerService } from 'src/app/services/player.service';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.css'],
 })
 
 export class BoardComponent implements OnInit {
@@ -21,22 +21,30 @@ export class BoardComponent implements OnInit {
   lastCardNumber: number = -1;
   points: number = 0;
   moviments: number = 0;
+  playerIndex: number = 0;
 
   constructor(private playerService: PlayerService) {}
 
   async createHandler(card: Card) {
     this.count += 1
-    this.moviments += 1
+    this.players![this.playerIndex].moviments += 1
     if (this.count == 2) {
       if (this.lastCardNumber == card.id) {
+        this.players![this.playerIndex].points += 1
         this.selected.push(this.lastCardNumber)
         this.selected.push(card.id)
         this.points += 1
+      } else {
+        this.playerIndex += 1
+        if (this.playerIndex == this.players?.length) {
+          this.playerIndex = 0;
+        }
       }
       setTimeout(() => {
         this.clear.emit()
         this.count = 0
       }, 1000)
+
     } else {
       this.lastCardNumber = card.id;
     }

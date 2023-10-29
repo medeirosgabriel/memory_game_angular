@@ -6,9 +6,9 @@ import { Player } from '../models/Player';
 })
 export class PlayerService {
 
-  constructor() {}
-
   players: Player[] = []
+
+  constructor() {}
 
   addPlayer(name: string): void {
     let player: Player = {

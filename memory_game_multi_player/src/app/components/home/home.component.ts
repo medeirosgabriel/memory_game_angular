@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
 import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
 
-  constructor(private playerService: PlayerService){}
+  constructor(private playerService: PlayerService, private router: Router){}
 
   n_players: number = 0
   list: number[] = []
@@ -21,9 +22,11 @@ export class HomeComponent {
     for (let key of Object.keys(data)) {
       let match = key.match(regex);
       if (match) {
-        this.playerService.addPlayer(match[0])
+        this.playerService.addPlayer(data[match[0]])
       }
     }
+
+    this.router.navigate(['/board']);
   }
 
   valueChange(value: string) {

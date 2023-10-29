@@ -46,3 +46,7 @@
     width: 8%;
     height: auto;
 }
+
+.selected-player {
+    background-color: cadetblue;
+}
